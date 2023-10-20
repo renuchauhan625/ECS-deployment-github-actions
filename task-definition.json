@@ -3,7 +3,7 @@
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "web-app",
+            "name": "web-app1",
             "image": ":latest",
             "cpu": 1024,
             "memory": 1024
