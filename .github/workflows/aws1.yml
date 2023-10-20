@@ -45,7 +45,7 @@ jobs:
           docker build -t win-app-container .
           docker tag win-app-container:latest 481331750683.dkr.ecr.us-east-1.amazonaws.com/ecs-windows:latest
           docker push 481331750683.dkr.ecr.us-east-1.amazonaws.com/ecs-windows:latest
-          echo "image=481331750683.dkr.ecr.us-east-1.amazonaws.com/ecs-windows:latest" >> $GITHUB_OUTPUT
+          bat "image=481331750683.dkr.ecr.us-east-1.amazonaws.com/ecs-windows:latest" >> $GITHUB_OUTPUT
       
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
