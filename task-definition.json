@@ -1,0 +1,12 @@
+{
+    "family": "win-task-definition",
+    "networkMode": "awsvpc",
+    "containerDefinitions": [
+        {
+            "name": "web-app",
+            "image": ":latest",
+            "cpu": 1024,
+            "memory": 1024
+        }
+    ]
+}
