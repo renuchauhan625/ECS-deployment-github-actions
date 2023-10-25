@@ -88,7 +88,7 @@ jobs:
         run: docker build -t sdk2:bmo2 .
 
       - name: Run Docker Container
-        run: docker run --rm -d -p 80:80 sdk2:bmo2
+        run: docker run -d -p 80:80 sdk2:bmo2
 
       - name: List Local Docker Images
         run: docker images
