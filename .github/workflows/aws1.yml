@@ -74,21 +74,21 @@ jobs:
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
 
-      - name: Deploy Amazon ECS task 
-        id: deploy-task
-        run: |
-          $taskArn = aws ecs run-task `
-              --cli-input-json file://run-task.json --query "tasks[*].containers[*].taskArn" --output text
-          # Wait for the EC2 instance to be in the "running" state
-          while [[ "$(aws ecs describe-tasks --cluster workshop-cluster --tasks $taskArn --query "tasks[*].lastStatus" --output text) != "RUNNING"]]; do
-              echo "Waiting for EC2 instance to be in a running state..."
-              sleep 150
-          done
+      # - name: Deploy Amazon ECS task 
+      #   id: deploy-task
+      #   run: |
+      #     $taskArn = aws ecs run-task `
+      #         --cli-input-json file://run-task.json --query "tasks[*].containers[*].taskArn" --output text
+      #     # Wait for the EC2 instance to be in the "running" state
+      #     while [[ "$(aws ecs describe-tasks --cluster workshop-cluster --tasks $taskArn --query "tasks[*].lastStatus" --output text) != "RUNNING"]]; do
+      #         echo "Waiting for EC2 instance to be in a running state..."
+      #         sleep 150
+      #     done
 
-          echo "EC2 instance is now in a running state."
-      - name: Task Ip Addres
-        run: |
-          aws ecs describe-tasks --cluster workshop-cluster --tasks $taskArn --query "tasks[*].attachments[*].details[?name=='privateIPv4Address'].value"
+      #     echo "EC2 instance is now in a running state."
+      # - name: Task Ip Addres
+      #   run: |
+      #     aws ecs describe-tasks --cluster workshop-cluster --tasks $taskArn --query "tasks[*].attachments[*].details[?name=='privateIPv4Address'].value"
 
 
       - name: Tag the Docker Image Locally
