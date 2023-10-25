@@ -1,10 +1,10 @@
 {
     "cluster": "workshop-cluster",
-    "taskDefinition": "win-task-definition:",
+    "taskDefinition": "win-task-definition:2",
     "networkConfiguration": {
         "awsvpcConfiguration": {
-            "subnets": ["", ""],
-            "securityGroups": [""],
+            "subnets": ["subnet-063029961d5e79252", "subnet-0ab2fdb1e0d06bbf5"],
+            "securityGroups": ["sg-08b6b0eb3ba72e921"],
             "assignPublicIp": "DISABLED"
         }
     }
