@@ -20,7 +20,7 @@ env:
 jobs:
   build:
     name: Build and Push Image
-    runs-on: windows-2022
+    runs-on: task-hosted
 
     steps:
       - name: Check out code
@@ -82,7 +82,7 @@ jobs:
 
 
       - name: Tag the Docker Image Locally
-        run: docker tag 481331750683.dkr.ecr.us-east-1.amazonaws.com/win-app-container:latest sdk2:bmo2
+        run: docker tag 481331750683.dkr.ecr.us-east-1.amazonaws.com/ecs-windows:latest sdk2:bmo2
 
       - name: Create Local Docker Image
         run: docker build -t sdk2:bmo2 .
