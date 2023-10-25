@@ -75,12 +75,11 @@ jobs:
           wait-for-service-stability: true
 
       - name: Deploy Amazon ECS task 
-        uses: aws-actions/amazon-ecs-deploy-task@df9643053eda01f169e64a0e60233aacca83799a
-        with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ env.ECS_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: true
+        id: deploy task
+        run:
+          $taskArn = aws ecs run-task `
+              --cli-input-json file://run-task.json --query "tasks[*].containers[*].taskArn" --output text
+
 
       - name: Tag the Docker Image Locally
         run: docker tag 481331750683.dkr.ecr.us-east-1.amazonaws.com/win-app-container:latest sdk2:bmo2
